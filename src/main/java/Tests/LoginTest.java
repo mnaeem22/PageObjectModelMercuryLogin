@@ -1,8 +1,12 @@
+package Tests;
+
+import Pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import Util.Utils;
 
 public class LoginTest {
 
@@ -10,7 +14,6 @@ public class LoginTest {
 
     @BeforeTest
     public  void setup() {
-        // ChromeDriver location set up in Utils class
         driver.get(Utils.BASE_URL);
         driver.manage().window().maximize();
     }
@@ -20,7 +23,7 @@ public class LoginTest {
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.enterUserName(Utils.userName);
-        loginPage.enterLastName(Utils.password);
+        loginPage.enterPassword(Utils.password);
         loginPage.pressSubmitButton();
     }
 
@@ -29,4 +32,5 @@ public class LoginTest {
         driver.manage().deleteAllCookies();
         driver.close();
     }
+
 }
